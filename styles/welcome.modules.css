@@ -1,0 +1,15 @@
+/* styles/welcome.module.css */
+.welcome-container {
+    text-align: center;
+    margin-top: 50px;
+  }
+  
+  .welcome-heading {
+    color: #228b40;
+  }
+  
+  .welcome-message {
+    font-size: 18px;
+    margin-top: 10px;
+  }
+  
