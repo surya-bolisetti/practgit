@@ -1,0 +1,98 @@
+import React, { useState } from 'react';
+import { Container, Typography, TextField, Button, Box } from '@mui/material';
+
+const AccountPage = () => {
+  const [userDetails, setUserDetails] = useState({
+    firstName: '',
+    lastName: '',
+    email: '',
+    password: '',
+  });
+
+  const handleInputChange = (e) => {
+    const { name, value } = e.target;
+    setUserDetails((prevDetails) => ({
+      ...prevDetails,
+      [name]: value,
+    }));
+  };
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    // You can handle form submission logic here, e.g., send data to a server
+    console.log('User details submitted:', userDetails);
+  };
+
+  return (
+    <Container maxWidth="sm" sx={{ marginTop: '5rem', textAlign: 'center' }}>
+      <Typography variant="h4" gutterBottom>
+        Account Details
+      </Typography>
+      <Box component="form" onSubmit={handleSubmit}>
+        <TextField
+          fullWidth
+          variant="outlined"
+          label="First Name"
+          name="firstName"
+          value={userDetails.firstName}
+          onChange={handleInputChange}
+          margin="normal"
+          required
+        />
+        <TextField
+          fullWidth
+          variant="outlined"
+          label="Last Name"
+          name="lastName"
+          value={userDetails.lastName}
+          onChange={handleInputChange}
+          margin="normal"
+          required
+        />
+        <TextField
+          fullWidth
+          variant="outlined"
+          label="Email"
+          type="email"
+          name="email"
+          value={userDetails.email}
+          onChange={handleInputChange}
+          margin="normal"
+          required
+        />
+        <TextField
+          fullWidth
+          variant="outlined"
+          label="Password"
+          type="password"
+          name="password"
+          value={userDetails.password}
+          onChange={handleInputChange}
+          margin="normal"
+          required
+        />
+        <Button type="submit" variant="contained" color="primary" sx={{ marginTop: 2 }}>
+          Submit
+        </Button>
+      </Box>
+      <Box sx={{ marginTop: 3 }}>
+        {userDetails.firstName && (
+          <Typography variant="h6" gutterBottom>
+            Your Details:
+          </Typography>
+        )}
+        <Typography gutterBottom>
+          First Name: {userDetails.firstName}
+        </Typography>
+        <Typography gutterBottom>
+          Last Name: {userDetails.lastName}
+        </Typography>
+        <Typography gutterBottom>
+          Email: {userDetails.email}
+        </Typography>
+      </Box>
+    </Container>
+  );
+};
+
+export default AccountPage;
